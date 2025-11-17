@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://gvqwukqhs85t"]
+
+[node name="Magnet" type="Area2D"]
