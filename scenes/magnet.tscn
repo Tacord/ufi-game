@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://gvqwukqhs85t"]
+[gd_scene load_steps=4 format=3 uid="uid://gvqwukqhs85t"]
+
+[ext_resource type="Script" uid="uid://dvsdg6xpo7sal" path="res://scripts/magnet.gd" id="1_oylys"]
+[ext_resource type="Texture2D" uid="uid://corlju0vl8uuj" path="res://assets/magnet.png" id="1_yp8jf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oylys"]
+size = Vector2(56, 58)
 
 [node name="Magnet" type="Area2D"]
+scale = Vector2(1.8, 1.8)
+script = ExtResource("1_oylys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oylys")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_yp8jf")
