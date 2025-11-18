@@ -7,7 +7,7 @@
 radius = 83.0
 height = 264.0
 
-[node name="Ringpull" type="Area2D"]
+[node name="Ringpull" type="Area2D" groups=["ringpull"]]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_ffa1m")
 
