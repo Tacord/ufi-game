@@ -5,6 +5,8 @@ var lerpSpeed : float = 100
 var currentDelta : float = 0
 
 @onready var player = $"../Player"
+@onready var level = $".."
+@onready var score = $"../UI/Score"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +18,7 @@ func _process(delta: float) -> void:
 	currentDelta = delta
 	if Input.is_action_just_pressed("z") and canAttack:
 		canAttack = false
-		SPEED = -2700
+		SPEED = -2000
 	position.y += SPEED * delta
 
 
@@ -34,4 +36,13 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area):
 	if area.is_in_group("ringpull"):
+		level.score += 1
+		level.scoreAnimation.play("addscore")
+		score.text = str(level.score)
+		area.queue_free()
+	if area.is_in_group("enemy"):
+		level.score += 3
+		level.scoreAnimation.play("addscore")
+		score.text = str(level.score)
+		SPEED = 0
 		area.queue_free()

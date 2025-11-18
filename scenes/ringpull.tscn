@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://bxawmxt4tckwg" path="res://assets/ringpull.png" id="1_xt71y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hmega"]
-radius = 83.0
-height = 264.0
+radius = 164.99998
+height = 329.99997
 
 [node name="Ringpull" type="Area2D" groups=["ringpull"]]
 scale = Vector2(0.2, 0.2)

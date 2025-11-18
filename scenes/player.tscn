@@ -1,19 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://2ewum80cfidx"]
 
 [ext_resource type="Script" uid="uid://btaqh3e3gesvj" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="Texture2D" uid="uid://864drj5utomy" path="res://icon.svg" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://dyc17isa726w3" path="res://assets/drone.png" id="2_g2els"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(127, 129)
+size = Vector2(264, 28)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3vyb7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -0.5)
+position = Vector2(1, -12)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
