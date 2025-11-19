@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	background.scroll_base_offset.y += 200 * delta
+	background.scroll_base_offset.y += 100 * delta
 	
 
 func _on_ringpull_timer_timeout() -> void:
