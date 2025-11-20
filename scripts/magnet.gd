@@ -3,10 +3,14 @@ var canAttack : bool = true
 var SPEED = 0
 var lerpSpeed : float = 100
 var currentDelta : float = 0
+var dead = false
 
 @onready var player = $"../Player"
 @onready var level = $".."
 @onready var score = $"../UI/Score"
+@onready var deadTimer = $"Dead Timer"
+@onready var progressbar = $Progress
+@onready var dieanimation = $Die
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +20,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	currentDelta = delta
-	if Input.is_action_just_pressed("z") and canAttack:
+	progressbar.value = deadTimer.time_left
+	if Input.is_action_just_pressed("z") and canAttack and not dead:
 		canAttack = false
 		SPEED = -2000
 	position.y += SPEED * delta
@@ -35,14 +40,25 @@ func _process(delta: float) -> void:
 	position.y = original_y
 
 func _on_area_entered(area):
-	if area.is_in_group("ringpull"):
-		level.score += 1
-		level.scoreAnimation.play("addscore")
-		score.text = str(level.score)
-		area.queue_free()
-	if area.is_in_group("enemy"):
-		level.score += 3
-		level.scoreAnimation.play("addscore")
-		score.text = str(level.score)
-		SPEED = 0
-		area.queue_free()
+	if not dead:
+		if area.is_in_group("ringpull"):
+			level.score += 1
+			level.scoreAnimation.play("addscore")
+			score.text = str(level.score)
+			area.queue_free()
+		if area.is_in_group("enemy"):
+			progressbar.show()
+			dieanimation.play("die")
+			dead = true
+			deadTimer.start()
+			level.score += 3
+			level.scoreAnimation.play("addscore")
+			score.text = str(level.score)
+			SPEED = 0
+			area.queue_free()
+
+
+func _on_dead_timer_timeout():
+	dieanimation.play("respawn")
+	progressbar.hide()
+	dead = false

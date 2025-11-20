@@ -18,9 +18,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("right") and position.x < rightBound:
 		inputDirection.x += 1
 		target_rotation = deg_to_rad(10)
-	
+
 	sprite.rotation = lerp(sprite.rotation, target_rotation, 10 * delta)
-		
+
 	var targetVel = inputDirection * SPEED
 	
 	if inputDirection.length() > 0 and position.x < rightBound and position.x > leftBound:

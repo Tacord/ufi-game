@@ -25,3 +25,8 @@ func _process(delta: float) -> void:
 			global_position += movement_amount * 0.5
 		else:
 			global_position += movement_amount
+
+
+func _on_body_entered(body):
+	if body.is_in_group("Player"):
+		pass
