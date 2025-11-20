@@ -92,7 +92,7 @@ position = Vector2(967, 949)
 motion_mirroring = Vector2(0, 5000)
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-modulate = Color(0.50140655, 0.5014065, 0.5014065, 1)
+modulate = Color(0.3779188, 0.3779189, 0.37791875, 1)
 z_index = -10
 position = Vector2(954, -1300)
 scale = Vector2(2, 2)
@@ -166,5 +166,9 @@ offset_right = 2392.0
 offset_bottom = 1363.0
 color = Color(0, 0, 0, 1)
 
+[node name="DifficultyTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="timeout" from="Ringpull Timer" to="." method="_on_ringpull_timer_timeout"]
 [connection signal="timeout" from="Gear Timer" to="." method="_on_gear_timer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]

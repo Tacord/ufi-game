@@ -10,7 +10,7 @@ var ROTATIONVAL = 2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rng.randomize()
-	SPEED = rng.randf_range(350,600)
+	SPEED = rng.randf_range(level.ringpull_min_speed,level.ringpull_max_speed)
 	ROTATIONVAL = rng.randf_range(-3,3)
 	scale.x = rng.randf_range(0.15,0.25)
 	scale.y = scale.x

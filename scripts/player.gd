@@ -44,6 +44,7 @@ func freeze(duration: float, time_scale : float = 0):
 	sprite.modulate = Color(1,1,1) 
 
 func die():
+	velocity = Vector2(0,0)
 	Input.start_joy_vibration(0,0,0.6,0.15)
 	global.score = level.score
 	$CollisionShape2D.queue_free()

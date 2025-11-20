@@ -97,7 +97,7 @@ offset_bottom = 734.0
 theme_override_fonts/font = ExtResource("1_j7j2c")
 theme_override_font_sizes/font_size = 50
 placeholder_text = "Enter name"
-max_length = 30
+max_length = 20
 caret_blink = true
 
 [node name="Goback" type="Label" parent="."]
