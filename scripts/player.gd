@@ -44,6 +44,8 @@ func freeze(duration: float, time_scale : float = 0):
 	sprite.modulate = Color(1,1,1) 
 
 func die():
+	Input.start_joy_vibration(0,0,0.6,0.15)
+	global.score = level.score
 	$CollisionShape2D.queue_free()
 	magnet.collider.queue_free()
 	$"../Death".show()
@@ -51,3 +53,5 @@ func die():
 	freeze(0.1,0)
 	$Die.play("die")
 	level.fadeAnimation.play("fade")
+	await level.fadeAnimation.animation_finished
+	get_tree().change_scene_to_file("res://scenes/score_screen.tscn")

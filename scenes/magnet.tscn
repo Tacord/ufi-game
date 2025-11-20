@@ -114,6 +114,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Progress" type="TextureProgressBar" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.49803922)
 offset_left = 41.111115
 offset_top = -18.88889

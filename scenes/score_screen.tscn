@@ -1,0 +1,151 @@
+[gd_scene load_steps=11 format=3 uid="uid://ba2f00ut08xwh"]
+
+[ext_resource type="Script" uid="uid://2kauxdby0xbd" path="res://scripts/score_screen.gd" id="1_bopw0"]
+[ext_resource type="FontFile" uid="uid://cgpos0gnmt7ke" path="res://assets/Bright Aura.ttf" id="1_j7j2c"]
+[ext_resource type="Shader" uid="uid://di0ahlwoan0dp" path="res://wavytext.gdshader" id="2_bopw0"]
+[ext_resource type="Texture2D" uid="uid://df0ducnt1srt" path="res://assets/tempbackground.png" id="3_1i8on"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o8i8v"]
+font = ExtResource("1_j7j2c")
+font_size = 100
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ddmsq"]
+shader = ExtResource("2_bopw0")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_cyl0f"]
+font = ExtResource("1_j7j2c")
+font_size = 50
+font_color = Color(0.5489626, 0.5489626, 0.54896253, 1)
+
+[sub_resource type="Animation" id="Animation_bopw0"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1i8on"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o8i8v"]
+_data = {
+&"RESET": SubResource("Animation_1i8on"),
+&"fade_in": SubResource("Animation_bopw0")
+}
+
+[node name="Score Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bopw0")
+
+[node name="Yourscore" type="Label" parent="."]
+layout_mode = 0
+offset_top = 203.0
+offset_right = 1915.0
+offset_bottom = 330.0
+text = "Your score:"
+label_settings = SubResource("LabelSettings_o8i8v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+material = SubResource("ShaderMaterial_ddmsq")
+layout_mode = 0
+offset_top = 331.0
+offset_right = 1920.0
+offset_bottom = 603.0
+theme_override_colors/default_color = Color(0.5247834, 0.9999998, 0.75268847, 1)
+theme_override_fonts/normal_font = ExtResource("1_j7j2c")
+theme_override_font_sizes/normal_font_size = 200
+text = "99999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 613.0
+offset_right = 1427.0
+offset_bottom = 734.0
+theme_override_fonts/font = ExtResource("1_j7j2c")
+theme_override_font_sizes/font_size = 50
+placeholder_text = "Enter name"
+max_length = 30
+caret_blink = true
+
+[node name="Goback" type="Label" parent="."]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 760.0
+offset_right = 1262.0
+offset_bottom = 863.0
+text = "Press (A) to confirm"
+label_settings = SubResource("LabelSettings_cyl0f")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 5000)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.50140655, 0.5014065, 0.5014065, 1)
+z_index = -10
+position = Vector2(954, -681)
+scale = Vector2(2, 2)
+texture = ExtResource("3_1i8on")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(974, -86)
+amount = 500
+lifetime = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(1200, 100)
+gravity = Vector2(0, 100)
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color = Color(1, 1, 1, 0.85490197)
+
+[node name="Fade" type="ColorRect" parent="."]
+z_index = 200
+layout_mode = 0
+offset_left = -533.0
+offset_top = -172.0
+offset_right = 2392.0
+offset_bottom = 1363.0
+color = Color(0, 0, 0, 1)
+
+[node name="FadeIn" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o8i8v")
+}

@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 	currentDelta = delta
 	progressbar.value = deadTimer.time_left
 	if Input.is_action_just_pressed("z") and canAttack and not dead:
+		Input.start_joy_vibration(0,0,0.1,0.1)
 		canAttack = false
 		SPEED = -2000
 	position.y += SPEED * delta
@@ -48,6 +49,7 @@ func _on_area_entered(area):
 			score.text = str(level.score)
 			area.queue_free()
 		if area.is_in_group("enemy"):
+			Input.start_joy_vibration(0,0,0.3,0.15)
 			progressbar.show()
 			dieanimation.play("die")
 			dead = true
