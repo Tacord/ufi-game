@@ -4,6 +4,8 @@ var SPEED = 500
 var ROTATIONVAL = 2
 @onready var player = $"../Player"
 @onready var magnet = $"../Magnet"
+@onready var score = $"../UI/Score"
+@onready var level = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,3 +27,14 @@ func _process(delta: float) -> void:
 			global_position += movement_amount * 0.5
 		else:
 			global_position += movement_amount
+
+func die():
+	level.score += 1
+	level.scoreAnimation.play("addscore")
+	score.text = str(level.score)
+	queue_free()
+			
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		die()

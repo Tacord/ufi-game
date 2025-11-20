@@ -29,4 +29,11 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
-		pass
+		body.die()
+		z_index = 100
+		die()
+		
+func die():
+	var timer = get_tree().create_timer(0.1, true, true, true)
+	await timer.timeout
+	queue_free()

@@ -3,6 +3,7 @@ extends Node2D
 @onready var ringpullTimer = $"Ringpull Timer"
 @onready var gearTimer = $"Gear Timer"
 @onready var scoreAnimation = $ScoreAnimation
+@onready var fadeAnimation = $Fade
 @export var ringpull : PackedScene
 @export var gear : PackedScene
 var rng = RandomNumberGenerator.new()

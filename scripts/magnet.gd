@@ -8,6 +8,7 @@ var dead = false
 @onready var player = $"../Player"
 @onready var level = $".."
 @onready var score = $"../UI/Score"
+@onready var collider = $CollisionShape2D
 @onready var deadTimer = $"Dead Timer"
 @onready var progressbar = $Progress
 @onready var dieanimation = $Die
