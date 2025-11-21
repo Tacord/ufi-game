@@ -56,12 +56,12 @@ label_settings = SubResource("LabelSettings_mhnvy")
 [node name="ScrollContainer" type="ScrollContainer" parent="UI"]
 offset_left = 105.0
 offset_top = 369.0
-offset_right = 805.0
+offset_right = 926.0
 offset_bottom = 1006.0
 
 [node name="LeaderboardContainer" type="GridContainer" parent="UI/ScrollContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 180
+theme_override_constants/h_separation = 120
 columns = 3
 script = ExtResource("4_g3eks")
 

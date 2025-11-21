@@ -21,7 +21,7 @@ func _ready() -> void:
 	timer = get_tree().create_timer(0.1, true, true, true)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadein")
-	timer = get_tree().create_timer(0.5, true, true, true)
+	timer = get_tree().create_timer(1.5, true, true, true)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadeout")
 	await fadeAnimation.animation_finished
@@ -29,7 +29,7 @@ func _ready() -> void:
 	await timer.timeout
 	$UI/TutorialText.text = "Press (A) to launch your magnet to get ringpulls"
 	fadeAnimation.play("tutorialfadein")
-	timer = get_tree().create_timer(0.7, true, true, true)
+	timer = get_tree().create_timer(1.5, true, true, true)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadeout")
 	await fadeAnimation.animation_finished
@@ -37,13 +37,13 @@ func _ready() -> void:
 	await timer.timeout
 	$UI/TutorialText.text = "Avoid the falling red gears"
 	fadeAnimation.play("tutorialfadein")
-	timer = get_tree().create_timer(1, true, true, true)
+	timer = get_tree().create_timer(1.5, true, true, true)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadeout")
 	await fadeAnimation.animation_finished
 	$UI/TutorialText.text = "Your magnet destroys gears, then deactivates temporarily"
 	fadeAnimation.play("tutorialfadein")
-	timer = get_tree().create_timer(1.5, true, true, true)
+	timer = get_tree().create_timer(2.5, true, true, true)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadeout")
 	await fadeAnimation.animation_finished
