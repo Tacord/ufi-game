@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://gvqwukqhs85t"]
+[gd_scene load_steps=17 format=3 uid="uid://gvqwukqhs85t"]
 
 [ext_resource type="Script" uid="uid://dvsdg6xpo7sal" path="res://scripts/magnet.gd" id="1_oylys"]
 [ext_resource type="Texture2D" uid="uid://corlju0vl8uuj" path="res://assets/magnet.png" id="1_yp8jf"]
 [ext_resource type="Texture2D" uid="uid://7i6g53i641pv" path="res://assets/empty.png" id="3_0osw7"]
 [ext_resource type="Texture2D" uid="uid://h0idxqioki50" path="res://assets/progress.png" id="4_uajfl"]
+[ext_resource type="Texture2D" uid="uid://bv8ucsyf3hdjm" path="res://assets/magnet ring.png" id="5_uajfl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oylys"]
 size = Vector2(56, 58)
@@ -34,6 +35,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingBase:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(17.526705, 17.526705, 17.526705, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_0osw7"]
 resource_name = "die"
@@ -61,6 +74,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.19607843)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingBase:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(17.526705, 17.526705, 17.526705, 1), Color(17.526583, 17.526583, 17.526583, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_dbf7y"]
@@ -90,12 +115,123 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0.19607843), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RingBase:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(17.526583, 17.526583, 17.526583, 0), Color(17.526583, 17.526583, 17.526583, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gsdxk"]
 _data = {
 &"RESET": SubResource("Animation_uajfl"),
 &"die": SubResource("Animation_0osw7"),
 &"respawn": SubResource("Animation_dbf7y")
+}
+
+[sub_resource type="Animation" id="Animation_gsdxk"]
+resource_name = "ring_pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RingBase/Ring:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
+"transitions": PackedFloat32Array(0.7, 1.3, 0.7, 1.3, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.48, 0.52), Vector2(0.5, 0.5), Vector2(0.52, 0.48), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_nxm4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RingBase/Ring:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ejna1"]
+_data = {
+&"RESET": SubResource("Animation_nxm4f"),
+&"ring_pulse": SubResource("Animation_gsdxk")
+}
+
+[sub_resource type="Animation" id="Animation_ejna1"]
+resource_name = "sizeup"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RingBase:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.43333334, 0.6),
+"transitions": PackedFloat32Array(0.55478483, 1, 1.5, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1, 1), Vector2(1, 1), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RingBase/Ring:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.43333334, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.3137255), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.3137255)]
+}
+
+[sub_resource type="Animation" id="Animation_hqeoq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RingBase:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RingBase/Ring:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.3137255)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hqeoq"]
+_data = {
+&"RESET": SubResource("Animation_hqeoq"),
+&"sizeup": SubResource("Animation_ejna1")
 }
 
 [node name="Magnet" type="Area2D"]
@@ -131,6 +267,26 @@ texture_progress = ExtResource("4_uajfl")
 libraries = {
 &"": SubResource("AnimationLibrary_gsdxk")
 }
+
+[node name="RingAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ejna1")
+}
+
+[node name="RingSizeUp" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Die")
+libraries = {
+&"": SubResource("AnimationLibrary_hqeoq")
+}
+
+[node name="RingBase" type="Node2D" parent="."]
+modulate = Color(17.526705, 17.526705, 17.526705, 1)
+scale = Vector2(0.7, 0.7)
+
+[node name="Ring" type="Sprite2D" parent="RingBase"]
+modulate = Color(1, 1, 1, 0.3137255)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_uajfl")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Dead Timer" to="." method="_on_dead_timer_timeout"]

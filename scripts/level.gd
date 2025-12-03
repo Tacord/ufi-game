@@ -4,6 +4,7 @@ extends Node2D
 @onready var gearTimer = $"Gear Timer"
 @onready var scoreAnimation = $ScoreAnimation
 @onready var fadeAnimation = $Fade
+@onready var player = $Player
 @export var ringpull : PackedScene
 @export var gear : PackedScene
 var rng = RandomNumberGenerator.new()
@@ -21,13 +22,13 @@ func _ready() -> void:
 	timer = get_tree().create_timer(0.1, true, true, true)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadein")
-	timer = get_tree().create_timer(0.5, true, true, true)
+	timer = get_tree().create_timer(0.9, true, true, true)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadeout")
 	await fadeAnimation.animation_finished
 	timer = get_tree().create_timer(0.2, true, true, true)
 	await timer.timeout
-	$UI/TutorialText.text = "Press (A) to launch your magnet to get ringpulls"
+	$UI/TutorialText.text = "Press (SPACE) to launch magnet"
 	fadeAnimation.play("tutorialfadein")
 	timer = get_tree().create_timer(0.7, true, true, true)
 	await timer.timeout
@@ -39,14 +40,17 @@ func _ready() -> void:
 	fadeAnimation.play("tutorialfadein")
 	timer = get_tree().create_timer(1, true, true, true)
 	await timer.timeout
-	fadeAnimation.play("tutorialfadeout")
-	await fadeAnimation.animation_finished
-	$UI/TutorialText.text = "Your magnet destroys gears, then deactivates temporarily"
-	fadeAnimation.play("tutorialfadein")
-	timer = get_tree().create_timer(1.5, true, true, true)
-	await timer.timeout
-	fadeAnimation.play("tutorialfadeout")
-	await fadeAnimation.animation_finished
+	if not player.dead:
+		fadeAnimation.play("tutorialfadeout")
+		await fadeAnimation.animation_finished
+		$UI/TutorialText.text = "Your magnet can destroy gears! \n(but gets disabled temporarilty)"
+	if not player.dead:
+		fadeAnimation.play("tutorialfadein")
+		timer = get_tree().create_timer(1.5, true, true, true)
+		await timer.timeout
+	if not player.dead:
+		fadeAnimation.play("tutorialfadeout")
+		await fadeAnimation.animation_finished
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

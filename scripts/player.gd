@@ -12,6 +12,7 @@ const leftBound = 100
 const rightBound = 1820
 var target_rotation : float = 0
 var current_time_scale = 1
+var dead = false
 
 func _physics_process(delta: float) -> void:
 	var inputDirection = Vector2.ZERO
@@ -44,6 +45,7 @@ func freeze(duration: float, time_scale : float = 0):
 	sprite.modulate = Color(1,1,1) 
 
 func die():
+	dead = true
 	velocity = Vector2(0,0)
 	Input.start_joy_vibration(0,0,0.6,0.15)
 	global.score = level.score

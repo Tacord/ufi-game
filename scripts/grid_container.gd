@@ -1,6 +1,7 @@
 extends GridContainer
 var player_list_with_pos = []
 var font = load("res://assets/Bright Aura.ttf")
+@onready var loadingtext = $"../../LoadingLeaderboard"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -46,6 +47,7 @@ func sort_players_and_add_position(player_list):
 	for player in player_list:
 		player["position"] = position
 		position += 1
+		loadingtext.hide()
 		
 	return player_list
 

@@ -29,9 +29,12 @@ func _process(delta: float) -> void:
 			global_position += movement_amount
 
 func die():
+	$CollisionShape2D.queue_free()
 	level.score += 1
 	level.scoreAnimation.play("addscore")
 	score.text = str(level.score)
+	$AnimationPlayer.play("collect")
+	await $AnimationPlayer.animation_finished
 	queue_free()
 			
 

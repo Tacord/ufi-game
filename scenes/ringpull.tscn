@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dilp511xr1wd0"]
+[gd_scene load_steps=7 format=3 uid="uid://dilp511xr1wd0"]
 
 [ext_resource type="Script" uid="uid://6nlis477w6bp" path="res://scripts/ringpull.gd" id="1_ffa1m"]
 [ext_resource type="Texture2D" uid="uid://bxawmxt4tckwg" path="res://assets/ringpull.png" id="1_xt71y"]
@@ -6,6 +6,67 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hmega"]
 radius = 164.99998
 height = 329.99997
+
+[sub_resource type="Animation" id="Animation_hmega"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.7539839, 0.75398386, 0.75398386, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ffa1m"]
+resource_name = "collect"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.6, 1.6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.7539839, 0.75398386, 0.75398386, 1), Color(0.75, 0.75, 0.75, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gg4ii"]
+_data = {
+&"RESET": SubResource("Animation_hmega"),
+&"collect": SubResource("Animation_ffa1m")
+}
 
 [node name="Ringpull" type="Area2D" groups=["ringpull"]]
 scale = Vector2(0.2, 0.2)
@@ -17,6 +78,11 @@ shape = SubResource("CapsuleShape2D_hmega")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.7539839, 0.75398386, 0.75398386, 1)
 texture = ExtResource("1_xt71y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gg4ii")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

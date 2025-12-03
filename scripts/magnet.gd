@@ -12,22 +12,27 @@ var dead = false
 @onready var deadTimer = $"Dead Timer"
 @onready var progressbar = $Progress
 @onready var dieanimation = $Die
+@onready var ringanimation = $RingAnimation
+@onready var ringbase = $RingBase
+@onready var ringsizeanimation = $RingSizeUp
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	ringanimation.play("ring_pulse")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	ringbase.rotation += 2 * delta
 	currentDelta = delta
 	progressbar.value = deadTimer.time_left
 	if Input.is_action_just_pressed("z") and canAttack and not dead:
+		ringsizeanimation.play("sizeup")
 		Input.start_joy_vibration(0,0,0.1,0.1)
 		canAttack = false
 		SPEED = -2000
 	position.y += SPEED * delta
-
+ 
 
 	lerpSpeed = 2000 * 1/(player.position.y - position.y)
 	if position.y < 800:
@@ -44,10 +49,7 @@ func _process(delta: float) -> void:
 func _on_area_entered(area):
 	if not dead:
 		if area.is_in_group("ringpull"):
-			level.score += 1
-			level.scoreAnimation.play("addscore")
-			score.text = str(level.score)
-			area.queue_free()
+			area.die()
 		if area.is_in_group("enemy"):
 			Input.start_joy_vibration(0,0,0.3,0.15)
 			progressbar.show()

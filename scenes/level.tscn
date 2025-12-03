@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bovfxbg5t40sd"]
+[gd_scene load_steps=16 format=3 uid="uid://bovfxbg5t40sd"]
 
 [ext_resource type="PackedScene" uid="uid://2ewum80cfidx" path="res://scenes/player.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://csb7v5rikyubp" path="res://scripts/level.gd" id="1_w8frs"]
@@ -124,6 +124,11 @@ _data = {
 &"tutorialfadeout": SubResource("Animation_olg7q")
 }
 
+[sub_resource type="Environment" id="Environment_klq6b"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 0.1
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w8frs")
 ringpull = ExtResource("2_ppgk2")
@@ -188,7 +193,7 @@ offset_right = 1561.0
 offset_bottom = 355.0
 theme_override_fonts/normal_font = ExtResource("6_2r41h")
 theme_override_font_sizes/normal_font_size = 50
-text = "Use the joystick to move left and right"
+text = "Press 🡸 or 🡺 to move"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -226,6 +231,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="DifficultyTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_klq6b")
 
 [connection signal="timeout" from="Ringpull Timer" to="." method="_on_ringpull_timer_timeout"]
 [connection signal="timeout" from="Gear Timer" to="." method="_on_gear_timer_timeout"]

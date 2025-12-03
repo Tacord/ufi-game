@@ -61,7 +61,7 @@ offset_bottom = 1006.0
 
 [node name="LeaderboardContainer" type="GridContainer" parent="UI/ScrollContainer"]
 layout_mode = 2
-theme_override_constants/h_separation = 180
+theme_override_constants/h_separation = 110
 columns = 3
 script = ExtResource("4_g3eks")
 
@@ -101,6 +101,18 @@ theme_override_colors/default_color = Color(0.8279367, 0.7938, 0.98, 0.4862745)
 theme_override_fonts/normal_font = ExtResource("3_con2f")
 theme_override_font_sizes/normal_font_size = 60
 text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadingLeaderboard" type="RichTextLabel" parent="UI"]
+offset_left = 84.0
+offset_top = 387.0
+offset_right = 812.0
+offset_bottom = 599.0
+theme_override_colors/default_color = Color(1, 1, 1, 0.23137255)
+theme_override_fonts/normal_font = ExtResource("3_con2f")
+theme_override_font_sizes/normal_font_size = 40
+text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -161,3 +173,10 @@ z_as_relative = false
 position = Vector2(368, 132)
 scale = Vector2(0.63, 0.63)
 texture = ExtResource("3_4ytvr")
+
+[node name="LeaderboardTimer" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="LeaderboardTimer" to="." method="_on_leaderboard_timer_timeout"]
