@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	$Sprite2D.rotation += ROTATIONVAL * delta
 	position.y += SPEED * delta
 	
-	if abs(global_position.x - magnet.global_position.x) < 600 and abs(global_position.y - magnet.global_position.y) < 400:
+	if abs(global_position.x - magnet.global_position.x) < 300 and abs(global_position.y - magnet.global_position.y) < 400:
 		var direction: Vector2 = global_position.direction_to(magnet.global_position)
 		var movement_amount: Vector2 = direction * 0.5 * (600 - (abs(global_position.x - magnet.global_position.x))) * delta
 		if magnet.canAttack:

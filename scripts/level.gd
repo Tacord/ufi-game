@@ -13,7 +13,7 @@ var time_elapsed = -2
 var ringpull_min_speed = 350
 var ringpull_max_speed = 600
 var gear_min_speed = 300
-var gear_max_speed = 550
+var gear_max_speed = 750
 var timer
 
 # Called when the node enters the scene tree for the first time.
@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 		ringpull_min_speed = 200 + 100 * (log(0.1)/log(10))
 		ringpull_min_speed = 500 + 100 * (log(0.1)/log(10))
 		gear_min_speed = 400 + 200 * (log(0.1)/log(10))
-		gear_max_speed = 600 + 200 * (log(0.1)/log(10))
+		gear_max_speed = 700 + 200 * (log(0.1)/log(10))
 		ringpullTimer.wait_time = 0.03 + 0.1 * exp(-0.005 * time_elapsed)
 		gearTimer.wait_time = 0.4 + 4 * exp(-0.05 * time_elapsed)
 	

@@ -163,7 +163,7 @@ offset_bottom = 776.0
 theme_override_colors/default_color = Color(0.85995, 0.83300006, 0.98, 0.47058824)
 theme_override_fonts/normal_font = ExtResource("3_con2f")
 theme_override_font_sizes/normal_font_size = 45
-text = "Press (A) to play"
+text = "Press SPACE to play"
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -27,6 +27,12 @@ func _process(delta: float) -> void:
 			global_position += movement_amount * 0.5
 		else:
 			global_position += movement_amount
+		if abs(global_position.x - magnet.global_position.x) < 250 and abs(global_position.y - magnet.global_position.y) < 250:
+			$Sprite2D.modulate = Color(1.0, 1.0, 0.678, 1.0)
+		else:
+			$Sprite2D.modulate = Color("c0c0c0")
+	else:
+		$Sprite2D.modulate = Color("c0c0c0")
 
 func die():
 	$CollisionShape2D.queue_free()

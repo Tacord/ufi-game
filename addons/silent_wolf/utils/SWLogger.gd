@@ -3,7 +3,7 @@ extends Node
 const SWUtils = preload("res://addons/silent_wolf/utils/SWUtils.gd")
 
 static func get_log_level():
-	var log_level = 1
+	var log_level = 2
 	if SilentWolf.config.has('log_level'):
 		log_level = SilentWolf.config.log_level
 	else:
