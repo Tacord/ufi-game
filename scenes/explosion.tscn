@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmjq0cgvtx58q"]
+[gd_scene load_steps=5 format=3 uid="uid://bmjq0cgvtx58q"]
 
 [ext_resource type="Texture2D" uid="uid://h0idxqioki50" path="res://assets/progress.png" id="1_17npe"]
 [ext_resource type="Script" uid="uid://lng786jopmmw" path="res://scripts/explosion.gd" id="2_nfeox"]
+[ext_resource type="AudioStream" uid="uid://cqosn86fe1wts" path="res://assets/sodacanexplode.wav" id="3_aw4cw"]
 
 [sub_resource type="Curve" id="Curve_nfeox"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.48837215, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -25,5 +26,9 @@ script = ExtResource("2_nfeox")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.66
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_aw4cw")
+volume_db = -3.817
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

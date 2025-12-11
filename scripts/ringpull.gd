@@ -24,6 +24,9 @@ func _process(delta: float) -> void:
 	
 	if lerping:
 		position = position.lerp(target_pos, delta * 10)
+		
+	if position.y > 1200:
+		queue_free()
 
 	else:
 		if not magnet.dead and abs(global_position.x - magnet.global_position.x) < 600 and abs(global_position.y - magnet.global_position.y) < 400:
@@ -53,6 +56,7 @@ func die():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
+		magnet.play_collect_sound()
 		die()
 		
 func skiddadle():

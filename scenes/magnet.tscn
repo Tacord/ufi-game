@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gvqwukqhs85t"]
+[gd_scene load_steps=22 format=3 uid="uid://gvqwukqhs85t"]
 
 [ext_resource type="Script" uid="uid://dvsdg6xpo7sal" path="res://scripts/magnet.gd" id="1_oylys"]
 [ext_resource type="Texture2D" uid="uid://corlju0vl8uuj" path="res://assets/magnet.png" id="1_yp8jf"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://bp0omo3jqkeid" path="res://assets/ringpullsound1.wav" id="6_nxm4f"]
 [ext_resource type="AudioStream" uid="uid://cp2hdu4uwuhln" path="res://assets/ringpullsound2.wav" id="7_ejna1"]
 [ext_resource type="AudioStream" uid="uid://bflt17r2xwgja" path="res://assets/ringpullsound3.wav" id="8_hqeoq"]
+[ext_resource type="AudioStream" uid="uid://chk8sqmxjm1q4" path="res://assets/magnethit.wav" id="9_ejna1"]
+[ext_resource type="AudioStream" uid="uid://tvtbwkvo7upp" path="res://assets/shootmagnet.wav" id="10_hqeoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oylys"]
 size = Vector2(56, 58)
@@ -308,6 +310,14 @@ volume_db = -6.5
 [node name="3" type="AudioStreamPlayer" parent="CollectSound"]
 stream = ExtResource("8_hqeoq")
 volume_db = -6.0
+
+[node name="MagnetHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ejna1")
+volume_db = -1.908
+
+[node name="MagnetShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_hqeoq")
+volume_db = -80.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Dead Timer" to="." method="_on_dead_timer_timeout"]

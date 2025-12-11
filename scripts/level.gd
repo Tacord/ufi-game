@@ -20,34 +20,34 @@ var timer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rng.randomize()
-	timer = get_tree().create_timer(0.1, true, true, true)
+	timer = get_tree().create_timer(0.1)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadein")
-	timer = get_tree().create_timer(0.9, true, true, true)
+	timer = get_tree().create_timer(0.9)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadeout")
 	await fadeAnimation.animation_finished
-	timer = get_tree().create_timer(0.2, true, true, true)
+	timer = get_tree().create_timer(0.2)
 	await timer.timeout
 	$UI/TutorialText.text = "Press (SPACE) to launch magnet"
 	fadeAnimation.play("tutorialfadein")
-	timer = get_tree().create_timer(0.7, true, true, true)
+	timer = get_tree().create_timer(0.7)
 	await timer.timeout
 	fadeAnimation.play("tutorialfadeout")
 	await fadeAnimation.animation_finished
-	timer = get_tree().create_timer(1, true, true, true)
+	timer = get_tree().create_timer(1)
 	await timer.timeout
 	$UI/TutorialText.text = "Avoid the falling red gears"
 	fadeAnimation.play("tutorialfadein")
-	timer = get_tree().create_timer(1, true, true, true)
+	timer = get_tree().create_timer(1)
 	await timer.timeout
 	if not player.dead:
 		fadeAnimation.play("tutorialfadeout")
 		await fadeAnimation.animation_finished
-		$UI/TutorialText.text = "Your magnet can destroy gears! \n(but gets disabled temporarilty)"
+		$UI/TutorialText.text = "Destroy gears using your magnet"
 	if not player.dead:
 		fadeAnimation.play("tutorialfadein")
-		timer = get_tree().create_timer(1.5, true, true, true)
+		timer = get_tree().create_timer(1.5)
 		await timer.timeout
 	if not player.dead:
 		fadeAnimation.play("tutorialfadeout")
@@ -81,7 +81,7 @@ func _on_gear_timer_timeout() -> void:
 		add_child(instance)
 
 func _on_soda_timer_timeout() -> void:
-	if time_elapsed > 0:
+	if time_elapsed > 12:
 		var instance = sodacan.instantiate()
 		instance.global_position.y = -300
 		instance.global_position.x = rng.randf_range(0,1920)

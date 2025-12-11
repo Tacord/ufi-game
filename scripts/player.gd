@@ -46,6 +46,7 @@ func freeze(duration: float, time_scale : float = 0):
 
 func die():
 	dead = true
+	$DieSound.play()
 	velocity = Vector2(0,0)
 	Input.start_joy_vibration(0,0,0.6,0.15)
 	global.score = level.score

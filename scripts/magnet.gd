@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 	currentDelta = delta
 	progressbar.value = deadTimer.time_left
 	if Input.is_action_just_pressed("z") and canAttack and not dead:
+		$MagnetShoot.play()
 		ringsizeanimation.play("sizeup")
 		Input.start_joy_vibration(0,0,0.1,0.1)
 		canAttack = false
@@ -53,20 +54,13 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area):
 	if not dead:
+		if area.is_in_group("sodacan"):
+			collect1.play()
 		if area.is_in_group("ringpull"):
-			var decide = rng.randi_range(1,1)
-			match decide:
-				1:
-					collect1.pitch_scale = rng.randf_range(0.7,1.3)
-					collect1.play()
-				2:
-					collect2.play()
-					collect2.pitch_scale = rng.randf_range(0.7,1.3)
-				3:
-					collect3.play()
-					collect3.pitch_scale = rng.randf_range(0.7,1.3)
+			play_collect_sound()
 			area.die()
 		if area.is_in_group("enemy"):
+			$MagnetHit.play()
 			Input.start_joy_vibration(0,0,0.3,0.15)
 			progressbar.show()
 			dieanimation.play("die")
@@ -78,6 +72,18 @@ func _on_area_entered(area):
 			SPEED = 0
 			area.queue_free()
 
+func play_collect_sound():
+	var decide = rng.randi_range(1,3)
+	match decide:
+		1:
+			collect1.pitch_scale = rng.randf_range(0.9,1.1)
+			collect1.play()
+		2:
+			collect2.play()
+			collect2.pitch_scale = rng.randf_range(0.9,1.1)
+		3:
+			collect3.play()
+			collect3.pitch_scale = rng.randf_range(0.9,1.1)
 
 func _on_dead_timer_timeout():
 	dieanimation.play("respawn")
