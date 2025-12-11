@@ -13,7 +13,7 @@ func _ready() -> void:
 	var api_key = file.get_as_text().strip_edges()
 	SilentWolf.configure({
 		"api_key": api_key,
-		"game_id": "UFigame",
+		"game_id": "publicufigame",
 		"log_level": 1
 	})
 	file.close()

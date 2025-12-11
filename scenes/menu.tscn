@@ -54,9 +54,9 @@ text = "Leaderboard"
 label_settings = SubResource("LabelSettings_mhnvy")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="UI"]
-offset_left = 105.0
+offset_left = 96.0
 offset_top = 369.0
-offset_right = 805.0
+offset_right = 944.0
 offset_bottom = 1006.0
 
 [node name="LeaderboardContainer" type="GridContainer" parent="UI/ScrollContainer"]
@@ -67,22 +67,22 @@ script = ExtResource("4_g3eks")
 
 [node name="Pos" type="RichTextLabel" parent="UI"]
 material = SubResource("ShaderMaterial_4ytvr")
-offset_left = -56.0
+offset_left = -53.0
 offset_top = 222.0
 offset_right = 278.0
 offset_bottom = 368.0
 theme_override_colors/default_color = Color(0.8279367, 0.7938, 0.98, 0.4862745)
 theme_override_fonts/normal_font = ExtResource("3_con2f")
-theme_override_font_sizes/normal_font_size = 60
+theme_override_font_sizes/normal_font_size = 40
 text = "#"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Pos2" type="RichTextLabel" parent="UI"]
 material = SubResource("ShaderMaterial_4ytvr")
-offset_left = 88.0
+offset_left = 33.0
 offset_top = 222.0
-offset_right = 697.0
+offset_right = 642.0
 offset_bottom = 368.0
 theme_override_colors/default_color = Color(0.8279367, 0.7938, 0.98, 0.4862745)
 theme_override_fonts/normal_font = ExtResource("3_con2f")
@@ -93,9 +93,9 @@ vertical_alignment = 1
 
 [node name="Pos3" type="RichTextLabel" parent="UI"]
 material = SubResource("ShaderMaterial_4ytvr")
-offset_left = 378.0
+offset_left = 371.0
 offset_top = 222.0
-offset_right = 1005.0
+offset_right = 998.0
 offset_bottom = 368.0
 theme_override_colors/default_color = Color(0.8279367, 0.7938, 0.98, 0.4862745)
 theme_override_fonts/normal_font = ExtResource("3_con2f")

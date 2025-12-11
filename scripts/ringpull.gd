@@ -2,6 +2,8 @@ extends Area2D
 var rng = RandomNumberGenerator.new()
 var SPEED = 500
 var ROTATIONVAL = 2
+var lerping = false
+var target_pos : Vector2
 @onready var player = $"../Player"
 @onready var magnet = $"../Magnet"
 @onready var score = $"../UI/Score"
@@ -20,30 +22,43 @@ func _process(delta: float) -> void:
 	$Sprite2D.rotation += ROTATIONVAL * delta
 	position.y += SPEED * delta
 	
-	if not magnet.dead and abs(global_position.x - magnet.global_position.x) < 600 and abs(global_position.y - magnet.global_position.y) < 400:
-		var direction: Vector2 = global_position.direction_to(magnet.global_position)
-		var movement_amount: Vector2 = direction * (600 - (abs(global_position.x - magnet.global_position.x))) * delta
-		if magnet.canAttack:
-			global_position += movement_amount * 0.5
-		else:
-			global_position += movement_amount
-		if abs(global_position.x - magnet.global_position.x) < 250 and abs(global_position.y - magnet.global_position.y) < 250:
-			$Sprite2D.modulate = Color(1.0, 1.0, 0.678, 1.0)
+	if lerping:
+		position = position.lerp(target_pos, delta * 10)
+
+	else:
+		if not magnet.dead and abs(global_position.x - magnet.global_position.x) < 600 and abs(global_position.y - magnet.global_position.y) < 400:
+			var direction: Vector2 = global_position.direction_to(magnet.global_position)
+			var movement_amount: Vector2 = direction * (600 - (abs(global_position.x - magnet.global_position.x))) * delta
+			if magnet.canAttack:
+				global_position += movement_amount * 0.5
+			else:
+				global_position += movement_amount
+			if abs(global_position.x - magnet.global_position.x) < 250 and abs(global_position.y - magnet.global_position.y) < 250:
+				$Sprite2D.modulate = Color(1.0, 1.0, 0.678, 1.0)
+			else:
+				$Sprite2D.modulate = Color("c0c0c0")
 		else:
 			$Sprite2D.modulate = Color("c0c0c0")
-	else:
-		$Sprite2D.modulate = Color("c0c0c0")
 
 func die():
-	$CollisionShape2D.queue_free()
-	level.score += 1
-	level.scoreAnimation.play("addscore")
-	score.text = str(level.score)
-	$AnimationPlayer.play("collect")
-	await $AnimationPlayer.animation_finished
-	queue_free()
+	if not lerping:
+		$CollisionShape2D.queue_free()
+		level.score += 1
+		level.scoreAnimation.play("addscore")
+		score.text = str(level.score)
+		$AnimationPlayer.play("collect")
+		await $AnimationPlayer.animation_finished
+		queue_free()
 			
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		die()
+		
+func skiddadle():
+	$LerpingTimer.start()
+	lerping = true
+
+
+func _on_lerping_timer_timeout() -> void:
+	lerping = false

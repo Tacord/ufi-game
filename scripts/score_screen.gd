@@ -1,5 +1,6 @@
 extends Control
 
+var alrpressed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +12,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("enter"):
+	if Input.is_action_just_pressed("enter") and not alrpressed:
+		$Goback.text = "Loading..."
+		alrpressed = true
 		if $LineEdit.text != "":
 			global.player_name = $LineEdit.text
 			var sw_result : Dictionary = await SilentWolf.Scores.save_score(global.player_name, global.score).sw_save_score_complete

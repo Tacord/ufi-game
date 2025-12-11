@@ -95,5 +95,10 @@ scale_amount_min = 5.0
 scale_amount_max = 10.0
 color = Color(0.7058824, 0.7058824, 0.7058824, 1)
 
+[node name="LerpingTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LerpingTimer" to="." method="_on_lerping_timer_timeout"]

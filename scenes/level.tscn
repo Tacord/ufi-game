@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bovfxbg5t40sd"]
+[gd_scene load_steps=17 format=3 uid="uid://bovfxbg5t40sd"]
 
 [ext_resource type="PackedScene" uid="uid://2ewum80cfidx" path="res://scenes/player.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://csb7v5rikyubp" path="res://scripts/level.gd" id="1_w8frs"]
 [ext_resource type="PackedScene" uid="uid://dilp511xr1wd0" path="res://scenes/ringpull.tscn" id="2_ppgk2"]
+[ext_resource type="PackedScene" uid="uid://ux5djreyl5xi" path="res://scenes/soda_can.tscn" id="3_b121j"]
 [ext_resource type="PackedScene" uid="uid://sc2g2uhl3ecm" path="res://scenes/gear.tscn" id="3_klq6b"]
 [ext_resource type="PackedScene" uid="uid://gvqwukqhs85t" path="res://scenes/magnet.tscn" id="4_mx8sn"]
 [ext_resource type="Texture2D" uid="uid://df0ducnt1srt" path="res://assets/tempbackground.png" id="5_klq6b"]
@@ -132,6 +133,7 @@ glow_bloom = 0.1
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w8frs")
 ringpull = ExtResource("2_ppgk2")
+sodacan = ExtResource("3_b121j")
 gear = ExtResource("3_klq6b")
 
 [node name="Player" parent="." instance=ExtResource("1_2q6dc")]
@@ -154,6 +156,10 @@ position = Vector2(960, 823)
 
 [node name="Ringpull Timer" type="Timer" parent="."]
 wait_time = 0.1
+autostart = true
+
+[node name="Soda Timer" type="Timer" parent="."]
+wait_time = 10.0
 autostart = true
 
 [node name="Gear Timer" type="Timer" parent="."]
@@ -236,5 +242,6 @@ autostart = true
 environment = SubResource("Environment_klq6b")
 
 [connection signal="timeout" from="Ringpull Timer" to="." method="_on_ringpull_timer_timeout"]
+[connection signal="timeout" from="Soda Timer" to="." method="_on_soda_timer_timeout"]
 [connection signal="timeout" from="Gear Timer" to="." method="_on_gear_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]

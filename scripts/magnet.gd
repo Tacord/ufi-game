@@ -15,9 +15,14 @@ var dead = false
 @onready var ringanimation = $RingAnimation
 @onready var ringbase = $RingBase
 @onready var ringsizeanimation = $RingSizeUp
+@onready var collect1 = $"CollectSound/1"
+@onready var collect2 = $"CollectSound/2"
+@onready var collect3 = $"CollectSound/3"
+var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	rng.randomize()
 	ringanimation.play("ring_pulse")
 
 
@@ -49,6 +54,17 @@ func _process(delta: float) -> void:
 func _on_area_entered(area):
 	if not dead:
 		if area.is_in_group("ringpull"):
+			var decide = rng.randi_range(1,1)
+			match decide:
+				1:
+					collect1.pitch_scale = rng.randf_range(0.7,1.3)
+					collect1.play()
+				2:
+					collect2.play()
+					collect2.pitch_scale = rng.randf_range(0.7,1.3)
+				3:
+					collect3.play()
+					collect3.pitch_scale = rng.randf_range(0.7,1.3)
 			area.die()
 		if area.is_in_group("enemy"):
 			Input.start_joy_vibration(0,0,0.3,0.15)

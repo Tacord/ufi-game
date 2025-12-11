@@ -6,6 +6,7 @@ extends Node2D
 @onready var fadeAnimation = $Fade
 @onready var player = $Player
 @export var ringpull : PackedScene
+@export var sodacan : PackedScene
 @export var gear : PackedScene
 var rng = RandomNumberGenerator.new()
 var score : int = 0
@@ -79,6 +80,12 @@ func _on_gear_timer_timeout() -> void:
 		instance.global_position.x = rng.randf_range(0,1920)
 		add_child(instance)
 
+func _on_soda_timer_timeout() -> void:
+	if time_elapsed > 0:
+		var instance = sodacan.instantiate()
+		instance.global_position.y = -300
+		instance.global_position.x = rng.randf_range(0,1920)
+		add_child(instance)
 
 func _on_difficulty_timer_timeout() -> void:
 	time_elapsed += 1

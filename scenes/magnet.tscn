@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://gvqwukqhs85t"]
+[gd_scene load_steps=20 format=3 uid="uid://gvqwukqhs85t"]
 
 [ext_resource type="Script" uid="uid://dvsdg6xpo7sal" path="res://scripts/magnet.gd" id="1_oylys"]
 [ext_resource type="Texture2D" uid="uid://corlju0vl8uuj" path="res://assets/magnet.png" id="1_yp8jf"]
 [ext_resource type="Texture2D" uid="uid://7i6g53i641pv" path="res://assets/empty.png" id="3_0osw7"]
 [ext_resource type="Texture2D" uid="uid://h0idxqioki50" path="res://assets/progress.png" id="4_uajfl"]
 [ext_resource type="Texture2D" uid="uid://bv8ucsyf3hdjm" path="res://assets/magnet ring.png" id="5_uajfl"]
+[ext_resource type="AudioStream" uid="uid://bp0omo3jqkeid" path="res://assets/ringpullsound1.wav" id="6_nxm4f"]
+[ext_resource type="AudioStream" uid="uid://cp2hdu4uwuhln" path="res://assets/ringpullsound2.wav" id="7_ejna1"]
+[ext_resource type="AudioStream" uid="uid://bflt17r2xwgja" path="res://assets/ringpullsound3.wav" id="8_hqeoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oylys"]
 size = Vector2(56, 58)
@@ -287,6 +290,24 @@ scale = Vector2(0.7, 0.7)
 modulate = Color(1, 1, 1, 0.3137255)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("5_uajfl")
+
+[node name="CollectSound" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="AudioStreamPlayer" parent="CollectSound"]
+stream = ExtResource("6_nxm4f")
+volume_db = -8.0
+
+[node name="2" type="AudioStreamPlayer" parent="CollectSound"]
+stream = ExtResource("7_ejna1")
+volume_db = -6.5
+
+[node name="3" type="AudioStreamPlayer" parent="CollectSound"]
+stream = ExtResource("8_hqeoq")
+volume_db = -6.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="Dead Timer" to="." method="_on_dead_timer_timeout"]
