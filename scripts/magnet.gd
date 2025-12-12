@@ -32,6 +32,7 @@ func _process(delta: float) -> void:
 	currentDelta = delta
 	progressbar.value = deadTimer.time_left
 	if Input.is_action_just_pressed("z") and canAttack and not dead:
+		#player.screenshake.play("smallshake")
 		$MagnetShoot.play()
 		ringsizeanimation.play("sizeup")
 		Input.start_joy_vibration(0,0,0.1,0.1)
@@ -60,6 +61,9 @@ func _on_area_entered(area):
 			play_collect_sound()
 			area.die()
 		if area.is_in_group("enemy"):
+			area.magnet_hit()
+			player.screenshake.play("medshake")
+			area.dead = true
 			$MagnetHit.play()
 			Input.start_joy_vibration(0,0,0.3,0.15)
 			progressbar.show()
@@ -70,7 +74,6 @@ func _on_area_entered(area):
 			level.scoreAnimation.play("addscore")
 			score.text = str(level.score)
 			SPEED = 0
-			area.queue_free()
 
 func play_collect_sound():
 	var decide = rng.randi_range(1,3)

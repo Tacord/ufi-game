@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://mvh7kotcf0f"]
+[gd_scene load_steps=10 format=3 uid="uid://mvh7kotcf0f"]
 
 [ext_resource type="Script" uid="uid://dmabh87yotgk3" path="res://scripts/menu.gd" id="1_vjb58"]
 [ext_resource type="Texture2D" uid="uid://df0ducnt1srt" path="res://assets/tempbackground.png" id="1_yqeox"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cgpos0gnmt7ke" path="res://assets/Bright Aura.ttf" id="3_con2f"]
 [ext_resource type="Script" uid="uid://ddbt85mdjkh27" path="res://scripts/grid_container.gd" id="4_g3eks"]
 [ext_resource type="Shader" uid="uid://di0ahlwoan0dp" path="res://wavytext.gdshader" id="4_mhnvy"]
+[ext_resource type="Texture2D" uid="uid://dlyqrx5swgtsf" path="res://assets/space.png" id="7_v86rl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mhnvy"]
 font = ExtResource("3_con2f")
@@ -163,7 +164,7 @@ offset_bottom = 776.0
 theme_override_colors/default_color = Color(0.85995, 0.83300006, 0.98, 0.47058824)
 theme_override_fonts/normal_font = ExtResource("3_con2f")
 theme_override_font_sizes/normal_font_size = 45
-text = "Press SPACE to play"
+text = "Press             to play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -173,6 +174,12 @@ z_as_relative = false
 position = Vector2(368, 132)
 scale = Vector2(0.63, 0.63)
 texture = ExtResource("3_4ytvr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Play"]
+modulate = Color(1, 1, 1, 0.6784314)
+position = Vector2(356.00006, 133.31253)
+scale = Vector2(0.08925007, 0.08925007)
+texture = ExtResource("7_v86rl")
 
 [node name="LeaderboardTimer" type="Timer" parent="."]
 wait_time = 7.0

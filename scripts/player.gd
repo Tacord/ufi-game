@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var cam = $Camera2D
 @onready var level = $".."
 @onready var magnet = $"../Magnet"
+@onready var screenshake = $ScreenShake
 const SPEED = 800.0
 const JUMP_VELOCITY = -400.0
 const ACCELERATION = 8

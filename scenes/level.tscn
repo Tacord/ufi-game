@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bovfxbg5t40sd"]
+[gd_scene load_steps=27 format=3 uid="uid://bovfxbg5t40sd"]
 
 [ext_resource type="PackedScene" uid="uid://2ewum80cfidx" path="res://scenes/player.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://csb7v5rikyubp" path="res://scripts/level.gd" id="1_w8frs"]
@@ -8,10 +8,107 @@
 [ext_resource type="PackedScene" uid="uid://gvqwukqhs85t" path="res://scenes/magnet.tscn" id="4_mx8sn"]
 [ext_resource type="Texture2D" uid="uid://df0ducnt1srt" path="res://assets/tempbackground.png" id="5_klq6b"]
 [ext_resource type="FontFile" uid="uid://cgpos0gnmt7ke" path="res://assets/Bright Aura.ttf" id="6_2r41h"]
+[ext_resource type="Texture2D" uid="uid://bh54iu8panwmx" path="res://assets/left.png" id="9_64w2a"]
+[ext_resource type="Texture2D" uid="uid://chm31yh0hkt5b" path="res://assets/right.png" id="10_fpun6"]
+[ext_resource type="Texture2D" uid="uid://dlyqrx5swgtsf" path="res://assets/space.png" id="11_wc255"]
+[ext_resource type="Texture2D" uid="uid://c62fsuumkwnkx" path="res://assets/gear.png" id="12_arp2o"]
+[ext_resource type="Texture2D" uid="uid://dn4uqpmef8u7i" path="res://assets/caution.png" id="13_ux5qa"]
+[ext_resource type="Shader" uid="uid://di0ahlwoan0dp" path="res://wavytext.gdshader" id="14_fpun6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_klq6b"]
 font = ExtResource("6_2r41h")
 font_size = 100
+
+[sub_resource type="Animation" id="Animation_64w2a"]
+resource_name = "tutorial"
+length = 11.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tutorial1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.9, 1.2333333, 3.1666667, 3.47),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tutorial2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.37, 4.7033334, 6.6366663, 6.9399996),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Tutorial3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7.8882513, 8.221585, 10.154918, 10.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 1.2, 3.151491, 3.651491, 4.22, 4.72, 6.6899996, 7.1899996, 7.7607436, 8.260744, 10.2, 10.7),
+"transitions": PackedFloat32Array(0.45062512, 1, 1.3660405, 1.3660405, 0.45062512, 1, 1.3660405, 1.3660405, 0.45062512, 1, 1.3660405, 1.3660405),
+"update": 0,
+"values": [Vector2(0, 1.3), Vector2(1, 1.3), Vector2(1, 1.3), Vector2(0, 1.3), Vector2(0, 1.3), Vector2(1.3, 1.3), Vector2(1.3, 1.3), Vector2(1e-05, 1.4), Vector2(0, 0.95), Vector2(1.1, 0.95), Vector2(1.1, 0.95), Vector2(0, 0.95)]
+}
+
+[sub_resource type="Animation" id="Animation_fpun6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tutorial1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wc255"]
+_data = {
+&"RESET": SubResource("Animation_fpun6"),
+&"tutorial": SubResource("Animation_64w2a")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wc255"]
+shader = ExtResource("14_fpun6")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
 
 [sub_resource type="Animation" id="Animation_klq6b"]
 length = 0.001
@@ -200,6 +297,178 @@ offset_bottom = 355.0
 theme_override_fonts/normal_font = ExtResource("6_2r41h")
 theme_override_font_sizes/normal_font_size = 50
 text = "Press 🡸 or 🡺 to move"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tutorial1" type="Control" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(960, 300)
+
+[node name="Left" type="Sprite2D" parent="UI/Tutorial1"]
+position = Vector2(904, 351)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_64w2a")
+
+[node name="Right" type="Sprite2D" parent="UI/Tutorial1"]
+position = Vector2(1039, 352)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("10_fpun6")
+
+[node name="Text" type="RichTextLabel" parent="UI/Tutorial1"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 194.0
+offset_right = 1569.0
+offset_bottom = 290.0
+theme_override_fonts/normal_font = ExtResource("6_2r41h")
+theme_override_font_sizes/normal_font_size = 50
+text = "Move:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tutorial2" type="Control" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(960, 300)
+
+[node name="Space" type="Sprite2D" parent="UI/Tutorial2"]
+position = Vector2(961.255, 361.63)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("11_wc255")
+
+[node name="Text" type="RichTextLabel" parent="UI/Tutorial2"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 194.0
+offset_right = 1569.0
+offset_bottom = 299.0
+theme_override_fonts/normal_font = ExtResource("6_2r41h")
+theme_override_font_sizes/normal_font_size = 50
+text = "Launch Magnet:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tutorial3" type="Control" parent="UI"]
+modulate = Color(1, 1, 1, 0.057991326)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(960, 300)
+
+[node name="Text" type="RichTextLabel" parent="UI/Tutorial3"]
+layout_mode = 0
+offset_left = 373.0
+offset_top = 194.0
+offset_right = 1569.0
+offset_bottom = 368.0
+theme_override_fonts/normal_font = ExtResource("6_2r41h")
+theme_override_font_sizes/normal_font_size = 50
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gear" type="Sprite2D" parent="UI/Tutorial3"]
+modulate = Color(0.7539839, 0.75398386, 0.75398386, 1)
+self_modulate = Color(1, 0.1882353, 0.1882353, 1)
+position = Vector2(851, 281)
+scale = Vector2(0.325, 0.325)
+texture = ExtResource("12_arp2o")
+
+[node name="Caution" type="Sprite2D" parent="UI/Tutorial3"]
+position = Vector2(1081, 276)
+scale = Vector2(0.21805555, 0.21805555)
+texture = ExtResource("13_ux5qa")
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+z_index = -1
+offset_left = 749.0
+offset_top = 209.0
+offset_right = 1192.0
+offset_bottom = 371.14285
+scale = Vector2(1e-05, 1.4)
+pivot_offset = Vector2(221.3, 0)
+color = Color(0, 0, 0, 0.3254902)
+
+[node name="ColorRect2" type="ColorRect" parent="UI/ColorRect"]
+z_index = -1
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 162.14287
+pivot_offset = Vector2(221.3, 0)
+color = Color(1, 1, 1, 0.3137255)
+
+[node name="ColorRect3" type="ColorRect" parent="UI/ColorRect"]
+z_index = -1
+layout_mode = 0
+offset_left = 423.0
+offset_right = 443.0
+offset_bottom = 160.71428
+pivot_offset = Vector2(221.3, 0)
+color = Color(1, 1, 1, 0.3137255)
+
+[node name="TutorialAnimation" type="AnimationPlayer" parent="UI"]
+libraries = {
+&"": SubResource("AnimationLibrary_wc255")
+}
+
+[node name="PauseScreen" type="ColorRect" parent="UI"]
+visible = false
+offset_left = -30.0
+offset_top = -15.0
+offset_right = 1973.0
+offset_bottom = 1103.0
+color = Color(0, 0, 0, 0.7647059)
+
+[node name="Paused" type="RichTextLabel" parent="UI/PauseScreen"]
+material = SubResource("ShaderMaterial_wc255")
+layout_mode = 0
+offset_left = 39.0
+offset_top = 258.0
+offset_right = 1959.0
+offset_bottom = 530.0
+theme_override_colors/default_color = Color(1, 1, 1, 0.8627451)
+theme_override_fonts/normal_font = ExtResource("6_2r41h")
+theme_override_font_sizes/normal_font_size = 120
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resume" type="RichTextLabel" parent="UI/PauseScreen"]
+material = SubResource("ShaderMaterial_wc255")
+layout_mode = 0
+offset_left = 39.0
+offset_top = 408.0
+offset_right = 1959.0
+offset_bottom = 680.0
+theme_override_colors/default_color = Color(1, 1, 1, 0.5372549)
+theme_override_fonts/normal_font = ExtResource("6_2r41h")
+theme_override_font_sizes/normal_font_size = 60
+text = "Press ENTER to resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="RichTextLabel" parent="UI/PauseScreen"]
+material = SubResource("ShaderMaterial_wc255")
+layout_mode = 0
+offset_left = 39.0
+offset_top = 519.0
+offset_right = 1959.0
+offset_bottom = 791.0
+theme_override_colors/default_color = Color(1, 1, 1, 0.5372549)
+theme_override_fonts/normal_font = ExtResource("6_2r41h")
+theme_override_font_sizes/normal_font_size = 60
+text = "Press ESC to quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 

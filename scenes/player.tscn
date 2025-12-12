@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2ewum80cfidx"]
+[gd_scene load_steps=14 format=3 uid="uid://2ewum80cfidx"]
 
 [ext_resource type="Script" uid="uid://btaqh3e3gesvj" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Texture2D" uid="uid://dyc17isa726w3" path="res://assets/drone.png" id="2_g2els"]
@@ -14,7 +14,7 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(191, 28)
+size = Vector2(236, 12)
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 length = 0.001
@@ -125,6 +125,60 @@ _data = {
 &"die": SubResource("Animation_g2els")
 }
 
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "smallshake"
+length = 0.14
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+resource_name = "medshake"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334, 0.16666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-20, 0), Vector2(0, 0), Vector2(20, 0), Vector2(0, 0), Vector2(-20, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"RESET": SubResource("Animation_qlg0r"),
+&"medshake": SubResource("Animation_tuyoq"),
+&"smallshake": SubResource("Animation_dqkch")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_3vyb7")
 
@@ -168,7 +222,7 @@ color = Color(0.39, 0.39, 0.39, 1)
 hue_variation_curve = SubResource("Curve_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(-1, -13)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -187,3 +241,8 @@ libraries = {
 [node name="DieSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qhqgy")
 volume_db = -6.0
+
+[node name="ScreenShake" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tuyoq")
+}

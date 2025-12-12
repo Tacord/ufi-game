@@ -1,11 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://sc2g2uhl3ecm"]
+[gd_scene load_steps=6 format=3 uid="uid://sc2g2uhl3ecm"]
 
 [ext_resource type="Script" uid="uid://by831uj6cx7n7" path="res://scripts/gear.gd" id="1_7j0fb"]
 [ext_resource type="Texture2D" uid="uid://c62fsuumkwnkx" path="res://assets/gear.png" id="2_4l2pq"]
+[ext_resource type="Texture2D" uid="uid://cajr5i2yntshy" path="res://assets/gearshard.png" id="3_4l2pq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hmega"]
 radius = 164.99998
 height = 329.99997
+
+[sub_resource type="Gradient" id="Gradient_4l2pq"]
+offsets = PackedFloat32Array(0.020547945, 0.8356164, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.37762237, 1, 1, 1, 0)
 
 [node name="Gear" type="Area2D" groups=["enemy"]]
 modulate = Color(1, 0.1891593, 0.18661842, 1)
@@ -19,4 +24,28 @@ shape = SubResource("CapsuleShape2D_hmega")
 modulate = Color(0.7539839, 0.75398386, 0.75398386, 1)
 texture = ExtResource("2_4l2pq")
 
+[node name="Die" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+texture = ExtResource("3_4l2pq")
+lifetime = 2.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+direction = Vector2(1, -18.725)
+spread = 85.36
+gravity = Vector2(0, 200)
+initial_velocity_min = 900.0
+initial_velocity_max = 1000.0
+angular_velocity_min = -252.37
+angular_velocity_max = 267.21
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+color_ramp = SubResource("Gradient_4l2pq")
+
+[node name="ExplodeTimer" type="Timer" parent="."]
+wait_time = 1.2
+one_shot = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ExplodeTimer" to="." method="_on_explode_timer_timeout"]

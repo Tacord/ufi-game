@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 			global_position += movement_amount
 
 func die():
+	player.screenshake.play("medshake")
 	$CollisionShape2D.queue_free()
 	level.score += 1
 	level.scoreAnimation.play("addscore")
