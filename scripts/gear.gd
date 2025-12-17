@@ -41,6 +41,7 @@ func magnet_hit():
 
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
+		global.distort_effect_2()
 		body.die()
 		z_index = 100
 		die()

@@ -3,6 +3,7 @@ extends Node2D
 @onready var ringpullTimer = $"Ringpull Timer"
 @onready var gearTimer = $"Gear Timer"
 @onready var scoreAnimation = $ScoreAnimation
+@onready var transitionAnimation = $Transition
 @onready var fadeAnimation = $Fade
 @onready var player = $Player
 @onready var pause = $UI/PauseScreen
@@ -22,6 +23,8 @@ var paused = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rng.randomize()
+	transitionAnimation.play("menutransition")
+	await transitionAnimation.animation_finished
 	$UI/TutorialAnimation.play("tutorial")
 	#timer = get_tree().create_timer(0.1)
 	#await timer.timeout

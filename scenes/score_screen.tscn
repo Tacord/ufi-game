@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba2f00ut08xwh"]
+[gd_scene load_steps=14 format=3 uid="uid://ba2f00ut08xwh"]
 
 [ext_resource type="Script" uid="uid://2kauxdby0xbd" path="res://scripts/score_screen.gd" id="1_bopw0"]
 [ext_resource type="FontFile" uid="uid://cgpos0gnmt7ke" path="res://assets/Bright Aura.ttf" id="1_j7j2c"]
@@ -19,6 +19,91 @@ shader_parameter/speed = 3.0
 font = ExtResource("1_j7j2c")
 font_size = 50
 font_color = Color(0.40832946, 0.40832946, 0.40832946, 1)
+
+[sub_resource type="Animation" id="Animation_o8i8v"]
+resource_name = "transition"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Transition/1:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.45062527, 1),
+"update": 0,
+"values": [Vector2(0, 1134), Vector2(2000, 1134)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Transition/2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(0.45062527, 1),
+"update": 0,
+"values": [Vector2(0, 1134), Vector2(2000, 1134)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Transition/3:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(0.45062527, 1),
+"update": 0,
+"values": [Vector2(0, 1134), Vector2(2000, 1134)]
+}
+
+[sub_resource type="Animation" id="Animation_ddmsq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Transition/1:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1134)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Transition/2:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1134)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Transition/3:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1134)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cyl0f"]
+_data = {
+&"RESET": SubResource("Animation_ddmsq"),
+&"transition": SubResource("Animation_o8i8v")
+}
 
 [sub_resource type="Animation" id="Animation_1i8on"]
 length = 0.001
@@ -146,7 +231,42 @@ offset_right = 2392.0
 offset_bottom = 1363.0
 color = Color(0, 0, 0, 1)
 
+[node name="TransitionMenu" type="AnimationPlayer" parent="."]
+root_node = NodePath("../FadeIn")
+libraries = {
+&"": SubResource("AnimationLibrary_cyl0f")
+}
+
 [node name="FadeIn" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_o8i8v")
 }
+
+[node name="Transition" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="ColorRect" parent="Transition"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -41.0
+offset_right = -24.0
+offset_bottom = 1093.0
+color = Color(0.8235294, 0.7882353, 0.9764706, 1)
+
+[node name="2" type="ColorRect" parent="Transition"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -41.0
+offset_right = -24.0
+offset_bottom = 1093.0
+color = Color(0.6666667, 0.5803922, 0.9490196, 1)
+
+[node name="3" type="ColorRect" parent="Transition"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -41.0
+offset_right = -24.0
+offset_bottom = 1093.0
+color = Color(0, 0, 0, 1)

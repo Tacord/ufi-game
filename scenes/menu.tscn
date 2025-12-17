@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://mvh7kotcf0f"]
+[gd_scene load_steps=15 format=3 uid="uid://mvh7kotcf0f"]
 
 [ext_resource type="Script" uid="uid://dmabh87yotgk3" path="res://scripts/menu.gd" id="1_vjb58"]
 [ext_resource type="Texture2D" uid="uid://df0ducnt1srt" path="res://assets/tempbackground.png" id="1_yqeox"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cgpos0gnmt7ke" path="res://assets/Bright Aura.ttf" id="3_con2f"]
 [ext_resource type="Script" uid="uid://ddbt85mdjkh27" path="res://scripts/grid_container.gd" id="4_g3eks"]
 [ext_resource type="Shader" uid="uid://di0ahlwoan0dp" path="res://wavytext.gdshader" id="4_mhnvy"]
+[ext_resource type="Texture2D" uid="uid://b0qre3ag1fkly" path="res://assets/circletransitionblank.png" id="6_13sgg"]
 [ext_resource type="Texture2D" uid="uid://dlyqrx5swgtsf" path="res://assets/space.png" id="7_v86rl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mhnvy"]
@@ -17,6 +18,167 @@ shader = ExtResource("4_mhnvy")
 shader_parameter/height = 3.0
 shader_parameter/frequency = 20.0
 shader_parameter/speed = 3.0
+
+[sub_resource type="Animation" id="Animation_i6lef"]
+resource_name = "transition"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Transition/1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Transition/2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.16666667, 1.0333333),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Transition/3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 1.0666667),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_70i5f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Transition/1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Transition/2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Transition/3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Transition/6:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2000, 1134)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Transition/5:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2000, 1134)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI/Transition/4:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2000, 1134)]
+}
+
+[sub_resource type="Animation" id="Animation_13sgg"]
+resource_name = "scoretransition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Transition/4:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(0.4506252, 1),
+"update": 0,
+"values": [Vector2(2000, 1134), Vector2(0, 1134)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Transition/5:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(0.4506252, 1),
+"update": 0,
+"values": [Vector2(2000, 1134), Vector2(0, 1134)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Transition/6:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.4506252, 1),
+"update": 0,
+"values": [Vector2(2000, 1134), Vector2(0, 1134)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mj5lg"]
+_data = {
+&"RESET": SubResource("Animation_70i5f"),
+&"scoretransition": SubResource("Animation_13sgg"),
+&"transition": SubResource("Animation_i6lef")
+}
 
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_vjb58")
@@ -117,6 +279,55 @@ text = "Loading..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Transition" type="Control" parent="UI"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="Sprite2D" parent="UI/Transition"]
+modulate = Color(0.8235294, 0.7882353, 0.9764706, 1)
+position = Vector2(960, 504)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_13sgg")
+
+[node name="2" type="Sprite2D" parent="UI/Transition"]
+modulate = Color(0.6666667, 0.5803922, 0.9490196, 1)
+position = Vector2(960, 504)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_13sgg")
+
+[node name="3" type="Sprite2D" parent="UI/Transition"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(960, 504)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("6_13sgg")
+
+[node name="4" type="ColorRect" parent="UI/Transition"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -41.0
+offset_right = 1976.0
+offset_bottom = 1093.0
+color = Color(0.8235294, 0.7882353, 0.9764706, 1)
+
+[node name="5" type="ColorRect" parent="UI/Transition"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -41.0
+offset_right = 1976.0
+offset_bottom = 1093.0
+color = Color(0.6666667, 0.5803922, 0.9490196, 1)
+
+[node name="6" type="ColorRect" parent="UI/Transition"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -41.0
+offset_right = 1976.0
+offset_bottom = 1093.0
+color = Color(0, 0, 0, 1)
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(974, -86)
 amount = 400
@@ -164,7 +375,7 @@ offset_bottom = 776.0
 theme_override_colors/default_color = Color(0.85995, 0.83300006, 0.98, 0.47058824)
 theme_override_fonts/normal_font = ExtResource("3_con2f")
 theme_override_font_sizes/normal_font_size = 45
-text = "Press             to play"
+text = "Press               to play"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -176,14 +387,24 @@ scale = Vector2(0.63, 0.63)
 texture = ExtResource("3_4ytvr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Play"]
-modulate = Color(1, 1, 1, 0.6784314)
-position = Vector2(356.00006, 133.31253)
-scale = Vector2(0.08925007, 0.08925007)
+modulate = Color(0.40392157, 0.39215687, 0.4627451, 1)
+position = Vector2(357.00006, 132.00003)
+scale = Vector2(0.108000085, 0.108000085)
 texture = ExtResource("7_v86rl")
 
 [node name="LeaderboardTimer" type="Timer" parent="."]
 wait_time = 7.0
 one_shot = true
 autostart = true
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mj5lg")
+}
+
+[node name="Transition2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mj5lg")
+}
 
 [connection signal="timeout" from="LeaderboardTimer" to="." method="_on_leaderboard_timer_timeout"]

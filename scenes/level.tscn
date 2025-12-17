@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bovfxbg5t40sd"]
+[gd_scene load_steps=32 format=3 uid="uid://bovfxbg5t40sd"]
 
 [ext_resource type="PackedScene" uid="uid://2ewum80cfidx" path="res://scenes/player.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://csb7v5rikyubp" path="res://scripts/level.gd" id="1_w8frs"]
@@ -14,14 +14,43 @@
 [ext_resource type="Texture2D" uid="uid://c62fsuumkwnkx" path="res://assets/gear.png" id="12_arp2o"]
 [ext_resource type="Texture2D" uid="uid://dn4uqpmef8u7i" path="res://assets/caution.png" id="13_ux5qa"]
 [ext_resource type="Shader" uid="uid://di0ahlwoan0dp" path="res://wavytext.gdshader" id="14_fpun6"]
+[ext_resource type="Texture2D" uid="uid://corlju0vl8uuj" path="res://assets/magnet.png" id="14_wc255"]
+[ext_resource type="Texture2D" uid="uid://b0qre3ag1fkly" path="res://assets/circletransitionblank.png" id="16_arp2o"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_klq6b"]
 font = ExtResource("6_2r41h")
 font_size = 100
 
+[sub_resource type="Animation" id="Animation_fpun6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Tutorial1:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_64w2a"]
 resource_name = "tutorial"
-length = 11.0
+length = 15.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,37 +94,22 @@ tracks/3/path = NodePath("ColorRect:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.7, 1.2, 3.151491, 3.651491, 4.22, 4.72, 6.6899996, 7.1899996, 7.7607436, 8.260744, 10.2, 10.7),
-"transitions": PackedFloat32Array(0.45062512, 1, 1.3660405, 1.3660405, 0.45062512, 1, 1.3660405, 1.3660405, 0.45062512, 1, 1.3660405, 1.3660405),
+"times": PackedFloat32Array(0.7, 1.2, 3.151491, 3.651491, 4.22, 4.72, 6.6899996, 7.1899996, 7.7607436, 8.260744, 10.2, 10.7, 11.120529, 11.620529, 13.966666, 14.466666),
+"transitions": PackedFloat32Array(0.45062512, 1, 1.3660405, 1.3660405, 0.45062512, 1, 1.3660405, 1.3660405, 0.45062512, 1, 1.3660405, 1.3660405, 0.45062512, 1, 1.3660405, 1.3660405),
 "update": 0,
-"values": [Vector2(0, 1.3), Vector2(1, 1.3), Vector2(1, 1.3), Vector2(0, 1.3), Vector2(0, 1.3), Vector2(1.3, 1.3), Vector2(1.3, 1.3), Vector2(1e-05, 1.4), Vector2(0, 0.95), Vector2(1.1, 0.95), Vector2(1.1, 0.95), Vector2(0, 0.95)]
+"values": [Vector2(0, 1.3), Vector2(1, 1.3), Vector2(1, 1.3), Vector2(0, 1.3), Vector2(0, 1.3), Vector2(1.3, 1.3), Vector2(1.3, 1.3), Vector2(1e-05, 1.4), Vector2(0, 0.95), Vector2(1.1, 0.95), Vector2(1.1, 0.95), Vector2(0, 0.95), Vector2(0, 1.3), Vector2(1.6, 1.3), Vector2(1.6, 1.3), Vector2(1e-05, 1.4)]
 }
-
-[sub_resource type="Animation" id="Animation_fpun6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Tutorial4:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(11.31165, 11.644984, 13.954454, 14.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1e-05, 1.4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tutorial1:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wc255"]
@@ -226,6 +240,90 @@ _data = {
 background_mode = 3
 glow_enabled = true
 glow_bloom = 0.1
+
+[sub_resource type="Animation" id="Animation_ux5qa"]
+resource_name = "menutransition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Transition/1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.9),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Transition/2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999994, 0.8333333),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Transition/3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.76666665),
+"transitions": PackedFloat32Array(1.5, 1),
+"update": 0,
+"values": [Vector2(1.5, 1.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_82cfe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Transition/1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Transition/3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Transition/2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, 1.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gunhw"]
+_data = {
+&"RESET": SubResource("Animation_82cfe"),
+&"menutransition": SubResource("Animation_ux5qa")
+}
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w8frs")
@@ -358,7 +456,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tutorial3" type="Control" parent="UI"]
-modulate = Color(1, 1, 1, 0.057991326)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -389,6 +487,39 @@ texture = ExtResource("12_arp2o")
 position = Vector2(1081, 276)
 scale = Vector2(0.21805555, 0.21805555)
 texture = ExtResource("13_ux5qa")
+
+[node name="Tutorial4" type="Control" parent="UI"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(960, 300)
+
+[node name="Text" type="RichTextLabel" parent="UI/Tutorial4"]
+layout_mode = 0
+offset_left = 360.5
+offset_top = 194.0
+offset_right = 1431.25
+offset_bottom = 456.24997
+theme_override_fonts/normal_font = ExtResource("6_2r41h")
+theme_override_font_sizes/normal_font_size = 50
+text = "Destroy              with"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gear" type="Sprite2D" parent="UI/Tutorial4"]
+modulate = Color(0.7539839, 0.75398386, 0.75398386, 1)
+self_modulate = Color(1, 0.1882353, 0.1882353, 1)
+position = Vector2(942.673, 323.00696)
+scale = Vector2(0.28896222, 0.28896222)
+texture = ExtResource("12_arp2o")
+
+[node name="Magnet" type="Sprite2D" parent="UI/Tutorial4"]
+position = Vector2(1239.7529, 323.00696)
+scale = Vector2(0.334, 0.334)
+texture = ExtResource("14_wc255")
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
 z_index = -1
@@ -472,6 +603,31 @@ text = "Press ESC to quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Transition" type="Control" parent="UI"]
+z_index = 100
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="1" type="Sprite2D" parent="UI/Transition"]
+modulate = Color(0.8235294, 0.7882353, 0.9764706, 1)
+position = Vector2(960, 504)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_arp2o")
+
+[node name="2" type="Sprite2D" parent="UI/Transition"]
+modulate = Color(0.6666667, 0.5803922, 0.9490196, 1)
+position = Vector2(960, 504)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_arp2o")
+
+[node name="3" type="Sprite2D" parent="UI/Transition"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(960, 504)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("16_arp2o")
+
 [node name="ScoreAnimation" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_b121j")
@@ -509,6 +665,11 @@ autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_klq6b")
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gunhw")
+}
 
 [connection signal="timeout" from="Ringpull Timer" to="." method="_on_ringpull_timer_timeout"]
 [connection signal="timeout" from="Soda Timer" to="." method="_on_soda_timer_timeout"]

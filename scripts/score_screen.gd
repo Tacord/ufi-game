@@ -20,5 +20,7 @@ func _process(delta: float) -> void:
 			var sw_result : Dictionary = await SilentWolf.Scores.save_score(global.player_name, global.score).sw_save_score_complete
 			print("Score persisted successfully: " + str(sw_result.score_id))
 			self.hide()
+		$TransitionMenu.play("transition")
+		await $TransitionMenu.animation_finished
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 		
