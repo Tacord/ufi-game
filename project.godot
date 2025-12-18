@@ -13,7 +13,9 @@ config_version=5
 config/name="UFI Game"
 run/main_scene="uid://mvh7kotcf0f"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://bwbu5uc6gnjtb"
+config/icon="uid://corlju0vl8uuj"
 
 [autoload]
 
@@ -25,6 +27,7 @@ SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
