@@ -4,7 +4,7 @@ var score = 0
 var player_name = "John Doe"
 var player_list = []
 var instance
-const BGM : PackedScene = preload("res://scenes/bgm.tscn")
+var BGM : PackedScene = preload("res://scenes/bgm.tscn")
 
 # Credit: ArtinTheCoder @ Github for the amazing leaderboard system!
 # https://www.youtube.com/watch?v=aF5megF14w0
@@ -36,6 +36,14 @@ func distort_effect():
 func distort_effect_2():
 	var node = instance.get_node("AnimationPlayer")
 	node.play("distort_2")
+
+func resume_BGM():
+	instance.volume_db = -80
+	instance.get_node("BGMMelody").volume_db = -6.5
+
+func pause_BGM():
+	instance.volume_db = -6.5
+	instance.get_node("BGMMelody").volume_db = -80
 
 func leaderboard():
 	for score in global.score:

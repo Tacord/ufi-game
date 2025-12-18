@@ -64,13 +64,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("escape") and not paused and not player.dead:
+		global.pause_BGM()
 		Engine.time_scale = 0
 		pause.show()
 		paused = true
 	elif Input.is_action_just_pressed("escape") and paused:
+		global.resume_BGM()
+		global.distort_effect_2()
 		Engine.time_scale = 1
 		get_tree().change_scene_to_file("res://scenes/menu.tscn")
 	if Input.is_action_just_pressed("enter") and paused:
+		global.resume_BGM()
 		Engine.time_scale = 1
 		pause.hide()
 		paused = false

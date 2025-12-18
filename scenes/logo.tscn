@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://xyjtl7trsu4i"]
+
+[ext_resource type="Shader" uid="uid://di0ahlwoan0dp" path="res://wavytext.gdshader" id="1_6tpak"]
+[ext_resource type="FontFile" uid="uid://cgpos0gnmt7ke" path="res://assets/Bright Aura.ttf" id="2_i5l2c"]
+[ext_resource type="Texture2D" uid="uid://df0ducnt1srt" path="res://assets/tempbackground.png" id="3_sdt4n"]
+[ext_resource type="Texture2D" uid="uid://corlju0vl8uuj" path="res://assets/magnet.png" id="4_12b0w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f71ep"]
+shader = ExtResource("1_6tpak")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p6kyk"]
+shader = ExtResource("1_6tpak")
+shader_parameter/height = 3.0
+shader_parameter/frequency = 20.0
+shader_parameter/speed = 3.0
+
+[node name="Logo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Ring-pull" type="RichTextLabel" parent="."]
+material = SubResource("ShaderMaterial_f71ep")
+layout_mode = 0
+offset_left = 621.0
+offset_top = 379.0
+offset_right = 1360.0
+offset_bottom = 646.0
+theme_override_colors/default_color = Color(0.82313406, 0.788919, 0.9760718, 1)
+theme_override_fonts/normal_font = ExtResource("2_i5l2c")
+theme_override_font_sizes/normal_font_size = 120
+text = "Ring-pull"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upskills Foundation" type="RichTextLabel" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_p6kyk")
+layout_mode = 0
+offset_left = 997.0
+offset_top = 333.0
+offset_right = 1736.0
+offset_bottom = 600.0
+theme_override_colors/default_color = Color(0.66802955, 0.58204013, 0.9487174, 1)
+theme_override_fonts/normal_font = ExtResource("2_i5l2c")
+theme_override_font_sizes/normal_font_size = 50
+text = "Upskills Foundation"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 5000)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color(0.50140655, 0.5014065, 0.5014065, 1)
+z_index = -10
+position = Vector2(904, -2123)
+scale = Vector2(2, 2)
+texture = ExtResource("3_sdt4n")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(974, -86)
+amount = 800
+lifetime = 15.0
+emission_shape = 3
+emission_rect_extents = Vector2(1200, 100)
+gravity = Vector2(0, 100)
+angular_velocity_min = -10.0
+angular_velocity_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color = Color(1, 1, 1, 0.85490197)
+
+[node name="Magnet" type="Sprite2D" parent="."]
+position = Vector2(1393, 516)
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("4_12b0w")

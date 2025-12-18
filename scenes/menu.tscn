@@ -19,46 +19,6 @@ shader_parameter/height = 3.0
 shader_parameter/frequency = 20.0
 shader_parameter/speed = 3.0
 
-[sub_resource type="Animation" id="Animation_i6lef"]
-resource_name = "transition"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Transition/1:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/Transition/2:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.16666667, 1.0333333),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/Transition/3:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 1.0666667),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
-}
-
 [sub_resource type="Animation" id="Animation_70i5f"]
 length = 0.001
 tracks/0/type = "value"
@@ -143,7 +103,7 @@ tracks/0/path = NodePath("UI/Transition/4:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.2, 1),
+"times": PackedFloat32Array(0.13333334, 1),
 "transitions": PackedFloat32Array(0.4506252, 1),
 "update": 0,
 "values": [Vector2(2000, 1134), Vector2(0, 1134)]
@@ -155,7 +115,7 @@ tracks/1/path = NodePath("UI/Transition/5:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 1),
+"times": PackedFloat32Array(0.06666667, 0.8666667),
 "transitions": PackedFloat32Array(0.4506252, 1),
 "update": 0,
 "values": [Vector2(2000, 1134), Vector2(0, 1134)]
@@ -167,10 +127,50 @@ tracks/2/path = NodePath("UI/Transition/6:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.73333335),
 "transitions": PackedFloat32Array(0.4506252, 1),
 "update": 0,
 "values": [Vector2(2000, 1134), Vector2(0, 1134)]
+}
+
+[sub_resource type="Animation" id="Animation_i6lef"]
+resource_name = "transition"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Transition/1:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Transition/2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.16666667, 1.0333333),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Transition/3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 1.0666667),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.5, 1.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mj5lg"]

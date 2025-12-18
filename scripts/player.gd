@@ -40,7 +40,7 @@ func freeze(duration: float, time_scale : float = 0):
 	sprite.modulate = Color(10000,10000,10000) 
 	current_time_scale = Engine.time_scale
 	Engine.time_scale = time_scale
-	var timer = get_tree().create_timer(duration, true, true, true)
+	var timer = get_tree().create_timer(duration, false, false, true)
 	await timer.timeout
 	Engine.time_scale = current_time_scale
 	sprite.modulate = Color(1,1,1) 
@@ -55,7 +55,7 @@ func die():
 	magnet.collider.queue_free()
 	$"../Death".show()
 	z_index = 100
-	freeze(0.1,0)
+	freeze(0.25,0)
 	$Die.play("die")
 	level.fadeAnimation.play("fade")
 	await level.fadeAnimation.animation_finished

@@ -125,22 +125,6 @@ _data = {
 &"die": SubResource("Animation_g2els")
 }
 
-[sub_resource type="Animation" id="Animation_dqkch"]
-resource_name = "smallshake"
-length = 0.14
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:offset")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_qlg0r"]
 length = 0.001
 tracks/0/type = "value"
@@ -170,6 +154,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(-20, 0), Vector2(0, 0), Vector2(20, 0), Vector2(0, 0), Vector2(-20, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "smallshake"
+length = 0.14
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.1, 0.13333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-10, 0), Vector2(0, 0), Vector2(10, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
@@ -226,6 +226,7 @@ position = Vector2(-1, -13)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 position = Vector2(0, -392)
 limit_left = -200
 limit_right = 2120
@@ -240,7 +241,7 @@ libraries = {
 
 [node name="DieSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qhqgy")
-volume_db = -6.0
+volume_db = -6.5
 
 [node name="ScreenShake" type="AnimationPlayer" parent="."]
 libraries = {
