@@ -39,10 +39,10 @@ func distort_effect_2():
 
 func resume_BGM():
 	instance.volume_db = -80
-	instance.get_node("BGMMelody").volume_db = -6.5
+	instance.get_node("BGMMelody").volume_db = -13
 
 func pause_BGM():
-	instance.volume_db = -6.5
+	instance.volume_db = -13
 	instance.get_node("BGMMelody").volume_db = -80
 
 func leaderboard():
